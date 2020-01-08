@@ -1,6 +1,6 @@
-[![Classifier Service](https://github.com/jax79sg/artyins-extractionservice/raw/master/images/SoftwareArchitectureExtractionService.jpg)]()
+[![Extraction Service](https://github.com/jax79sg/artyins-extractionservice/raw/master/images/SoftwareArchitectureExtractionService.jpg)]()
 
-# Classifier Service For artyins deployment architecture
+# Extraction Service For artyins deployment architecture
 This is a submodule for the artyins architecture. Please refer to [main module](https://github.com/jax79sg/artyins) for full build details.
 
 [![Build Status](https://travis-ci.com/jax79sg/artyins-extractionservice.svg?branch=master)](https://travis-ci.com/jax79sg/artyins-extractionservice)
