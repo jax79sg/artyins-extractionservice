@@ -12,7 +12,7 @@ mkdir /tmp
 cp tika-server.jar /tmp/
 cp tika-server.jar.md5 /tmp/
 mkdir /mnt/shareddata
-cp test01.pdf /mnt/shareddata
-cp test02.pdf /mnt/shareddata
+cp test.pdf /mnt/shareddata
+cp test2.pdf /mnt/shareddata
 echo "Installing python requirements"
 pip install -r requirements.txt
