@@ -10,7 +10,7 @@ ehthumbs.db
 Thumbs.db
 @turtledb
 *.pyc
-
+tika-server.jar
 # Virtual envs #
 ################
 venv
