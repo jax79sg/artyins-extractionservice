@@ -7,6 +7,7 @@ else
    echo "tika-server.jar does not exists, downloading now"
    wget -O tika-server.jar http://search.maven.org/remotecontent?filepath=org/apache/tika/tika-server/1.23/tika-server-1.23.jar
 fi
+mkdir /tmp
 cp tika-server.jar /tmp/
 echo "Installing python requirements"
 pip install -r requirements.txt
