@@ -11,6 +11,7 @@ fi
 mkdir /tmp
 cp tika-server.jar /tmp/
 cp tika-server.jar.md5 /tmp/
+mkdir /mnt
 mkdir /mnt/shareddata
 cp test.pdf /mnt/shareddata
 cp test2.pdf /mnt/shareddata
