@@ -32,6 +32,7 @@ class ExtractorConfig():
 ```
 
 ### Abstract Extraction Class
+All implementations of extractors must implement this abstract class.
 ```python
 from abc import ABC, abstractmethod
 class ExtractorInterface(ABC):
@@ -168,15 +169,6 @@ pip install --user -r requirements.txt`
 This repository is linked to [Travis CI/CD](https://travis-ci.com/jax79sg/artyins-extractionservice). You are required to write the necessary unit tests if you introduce more extraction classes.
 ### Unit Tests
 ```python
-```
-
-### Web Service Test
-```
-#Start gunicorn wsgi server
-gunicorn --bind 0.0.0.0:9898 --daemon --workers 1 wsgi:app
-```
-Send test POST request
-```python
 import unittest
 
 class TestModels(unittest.TestCase):
@@ -191,6 +183,26 @@ class TestModels(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+```
+
+### Web Service Test
+```
+#Start gunicorn wsgi server
+gunicorn --bind 0.0.0.0:9898 --daemon --workers 1 wsgi:app
+```
+### Send test POST request
+```python
+import requests 
+
+URL = "http://localhost:9898/extract_content"
+DATA = [{'filename':'/test.pdf',},{'filename':'/test2.pdf'}]
+  
+# sending get request and saving the response as response object 
+r = requests.post(url = URL, json  = DATA) 
+print(r) 
+# extracting results in json format 
+data = r.json()
+print("Data sent:\n{}\n\nData received:\n{}".format(DATA,data))
 ```
 
 ---
