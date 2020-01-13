@@ -65,9 +65,9 @@ def extract_content_get():
         result = run_extract_content(request_json)
         
         response_msg = json.dumps(result)
-        #response = {
-        #   'message': response_msg
-        #}
+        response = {
+           'results': response_msg
+        }
         return jsonify(response_msg), 200
 
 @app.route('/test', methods=['GET'])
