@@ -13,6 +13,7 @@ branches:
 
 install:
   - source setup_prerequisites.sh
+  - sudo apt install axel
   - pip install -r requirements.txt
 
 script:

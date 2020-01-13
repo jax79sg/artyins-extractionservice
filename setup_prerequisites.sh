@@ -1,7 +1,5 @@
 #!/bin/bash
 echo on
-apt update
-apt install axel
 export TIKA_SERVER_JAR=/tmp/tika-server.jar
 mkdir /tmp
 rm -r /tmp/tika*
