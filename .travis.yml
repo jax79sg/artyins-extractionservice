@@ -12,6 +12,7 @@ branches:
   - stable
 
 install:
+  - sudo apt update
   - sudo apt install axel
   - source setup_prerequisites.sh
   - pip install -r requirements.txt
