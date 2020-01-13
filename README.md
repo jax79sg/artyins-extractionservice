@@ -26,7 +26,7 @@ The extraction service can be called by a HTTP POST call. Primarily on http://ar
 ```
 After the content is successfully extracted, it will return a json of the following format
 ```python
-{"results":[{"filename":"file01.pdf","section":"observation","content":"adfsfswjhrafkf"},{"filename":"file02.pdf","section":"observation","content":"kfsdfjsfsjhsd"}]}
+{"results":[{"filename":"file01.pdf","id":1,"section":"observation","content":"adfsfswjhrafkf"},{"filename":"file02.pdf","id":2,"section":"observation","content":"kfsdfjsfsjhsd"}]}
 ```
 ### config.py
 The configuration file will indicate the extractor class to use. For testing purposes, the tika library is used. 
