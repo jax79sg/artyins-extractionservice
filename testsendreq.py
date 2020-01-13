@@ -1,6 +1,6 @@
 import requests 
 
-URL = "http://localhost:9898/extract_content"
+URL = "http://127.0.0.1:9891/extract_content"
 DATA = [{'filename':'/test.pdf',},{'filename':'/test2.pdf'}]
   
 # sending get request and saving the response as response object 
