@@ -21,8 +21,12 @@ Refer to [Trello Task list](https://trello.com/c/mKnW1fgx) for running tasks.
 
 ## Usage
 The extraction service can be called by a HTTP POST call. Primarily on http://artyins-extractionservice:9891/extract_content. It expects a json of the following format
+```json
+[{"filename":"file01.pdf",},{"filename":"file02.pdf"}]
+```
+After the content is successfully extracted, it will return a json of the following format
 ```python
-[{'filename':'file01.pdf',},{'filename':'file02.pdf'}]
+{"results":[{"filename":"file01.pdf","content":"adfsfswjhrafkf"},{"filename":"file02.pdf", "content":"kfsdfjsfsjhsd"}]}
 ```
 ### config.py
 The configuration file will indicate the extractor class to use. For testing purposes, the tika library is used. 
