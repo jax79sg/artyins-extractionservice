@@ -46,8 +46,8 @@ def run_extract_content(data):
     allresults=[]
     for entry in data:
         print("Processing: ",entry['filename'])
-        results = extractor.extract(PREFIX_PATH+entry['filename'])
-        myresult={'filename':entry['filename'],'content':results}
+        content,section = extractor.extract(PREFIX_PATH+entry['filename'])
+        myresult={'filename':entry['filename'],'id':entry['id'],'section':section,'content':content}
         print(myresult)
         allresults.append(myresult)
 
@@ -68,7 +68,7 @@ def extract_content_get():
         response = {
            'results': response_msg
         }
-        return jsonify(response_msg), 200
+        return jsonify(response), 200
 
 @app.route('/test', methods=['GET'])
 def test_get():
