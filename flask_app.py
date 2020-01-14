@@ -22,7 +22,7 @@ sys.path.append(ROOT_DIR)  # To find local version of the library
 
 # Logging confg
 logging.basicConfig(level=logging.DEBUG,handlers=[
-        logging.FileHandler("{0}/{1}.log".format(".", "log")),
+        logging.FileHandler("{0}/{1}.log".format("/logs", "extractionservice")),
         logging.StreamHandler()
     ],
                 format="%(asctime)-15s %(levelname)-8s %(message)s")
@@ -38,6 +38,7 @@ PREFIX_PATH=config.SHARED_DATA_PATH
 module = __import__(config.MODEL_MODULE, fromlist=[config.MODEL_CLASS])
 my_class = getattr(module,config.MODEL_CLASS)
 extractor = my_class()
+logging.info("Dynamic loading completed")
 print("{}.{} loaded successfully!".format(config.MODEL_MODULE,config.MODEL_CLASS))
 
 def run_extract_content(data):
