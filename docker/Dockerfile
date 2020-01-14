@@ -7,6 +7,8 @@ RUN git clone https://github.com/jax79sg/artyins-extractionservice
 RUN cd artyins-extractionservice && \
     ./setup_prerequisites.sh
 EXPOSE 9891
+RUN mkdir /logs && \
+    mkdir /shareddata
 WORKDIR artyins-extractionservice
 ENTRYPOINT ["gunicorn","--bind","0.0.0.0:9891","--workers","10","wsgi:app"]
 
