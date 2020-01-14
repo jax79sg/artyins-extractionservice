@@ -10,5 +10,5 @@ EXPOSE 9891
 RUN mkdir /logs && \
     mkdir /shareddata
 WORKDIR artyins-extractionservice
-ENTRYPOINT ["gunicorn","--bind","0.0.0.0:9891","--workers","10","wsgi:app"]
+ENTRYPOINT ["gunicorn","--bind","0.0.0.0:9891","--workers","10","-c","docker-gunicorn.conf.py","wsgi:app"]
 
