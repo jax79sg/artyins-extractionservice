@@ -82,7 +82,7 @@ def test_get():
     response = {
         'message': 'ok'
     }
-    return jsonify(response), 200
+    return 0, 200
 
 
 if __name__ == '__main__':
