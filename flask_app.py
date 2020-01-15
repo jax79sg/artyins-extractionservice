@@ -46,7 +46,7 @@ def run_extract_content(data):
     logging.info('Loading data: %s with type %s', data, type(data))
     allresults=[]
     for entry in data:
-        logging.info("Processing: ",entry['filename'])
+        logging.info("Processing: %s ",entry['filename'])
         content,section = extractor.extract(PREFIX_PATH+entry['filename'])
         myresult={'filename':entry['filename'],'id':entry['id'],'section':section,'content':content}
         logging.info(myresult)
