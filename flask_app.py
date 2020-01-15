@@ -67,7 +67,7 @@ def extract_content_get():
         request_json = request.get_json(force=True)
         logging.info("Sending request to extraction")
         result = run_extract_content(request_json)
-        logging.info("Extraction complete, dumping results)
+        logging.info("Extraction complete, dumping results")
         response_msg = json.dumps(result)
         response = {
            'results': response_msg
