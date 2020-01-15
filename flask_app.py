@@ -43,13 +43,13 @@ print("{}.{} loaded successfully!".format(config.MODEL_MODULE,config.MODEL_CLASS
 
 def run_extract_content(data):
     # Expecting {filename:'path'}
-    logging.info('Loading data: %s', data)
+    logging.info('Loading data: %s with type %s', data, type(data))
     allresults=[]
     for entry in data:
-        print("Processing: ",entry['filename'])
+        logging.info("Processing: ",entry['filename'])
         content,section = extractor.extract(PREFIX_PATH+entry['filename'])
         myresult={'filename':entry['filename'],'id':entry['id'],'section':section,'content':content}
-        print(myresult)
+        logging.info(myresult)
         allresults.append(myresult)
 
     return allresults
@@ -60,11 +60,13 @@ app = Flask(__name__)
 
 @app.route('/extract_content', methods=['POST'])
 def extract_content_get():
-
+    logging.info("Received extract content request")
     if request.method == 'POST':
+        logging.info("Extracting request)
         request_json = request.get_json(force=True)
+        logging.info("Sending request to extraction")
         result = run_extract_content(request_json)
-        
+        logging.info("Extraction complete, dumping results)
         response_msg = json.dumps(result)
         response = {
            'results': response_msg
