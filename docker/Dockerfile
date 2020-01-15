@@ -8,7 +8,6 @@ RUN cd artyins-extractionservice && \
     ./setup_prerequisites.sh
 COPY tika-server.jar /tmp/tika-server.jar
 COPY tika-server.jar.md5 /tmp/tika-server.jar.md5
-EXPOSE 9891
 RUN mkdir /logs && \
     mkdir /shareddata
 WORKDIR artyins-extractionservice
