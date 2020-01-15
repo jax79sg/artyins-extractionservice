@@ -54,9 +54,12 @@ def run_extract_content(data):
 
     return allresults
 
+def firstrun():
+    extractor.extract("test.txt")
 
 # Instantiate the Node
 app = Flask(__name__)
+firstrun()
 
 @app.route('/extract_content', methods=['POST'])
 def extract_content_get():
