@@ -14,7 +14,7 @@ class TIKExtractor(ExtractorInterface):
 
     def extract(self, fileobject):
         parsed = parser.from_file(fileobject)
-        return parsed["content"]
+        return parsed["content"], "unknown"
 
 if __name__=="__main__":
     myextractor = TIKExtractor()
