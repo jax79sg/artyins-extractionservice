@@ -6,6 +6,8 @@ RUN apt update && \
 RUN git clone https://github.com/jax79sg/artyins-extractionservice
 RUN cd artyins-extractionservice && \
     ./setup_prerequisites.sh
+COPY tika-server.jar /tmp/tika-server.jar
+COPY tika-server.jar.md5 /tmp/tika-server.jar.md5
 EXPOSE 9891
 RUN mkdir /logs && \
     mkdir /shareddata

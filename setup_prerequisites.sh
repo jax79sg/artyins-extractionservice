@@ -2,9 +2,9 @@
 echo on
 export TIKA_SERVER_JAR=/tmp/tika-server.jar
 mkdir /tmp
-rm -r /tmp/tika*
-wget -O /tmp/tika-server.jar  http://search.maven.org/remotecontent?filepath=org/apache/tika/tika-server/1.23/tika-server-1.23.jar
-wget -O /tmp/tika-server.jar.md5 http://search.maven.org/remotecontent?filepath=org/apache/tika/tika-server/1.23/tika-server-1.23.jar.md5
+#rm -r /tmp/tika*
+#wget -O /tmp/tika-server.jar  http://search.maven.org/remotecontent?filepath=org/apache/tika/tika-server/1.23/tika-server-1.23.jar
+#wget -O /tmp/tika-server.jar.md5 http://search.maven.org/remotecontent?filepath=org/apache/tika/tika-server/1.23/tika-server-1.23.jar.md5
 mkdir /mnt
 mkdir /mnt/shareddata
 cp test.pdf /mnt/shareddata
