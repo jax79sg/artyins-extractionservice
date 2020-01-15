@@ -62,7 +62,8 @@ app = Flask(__name__)
 def extract_content_get():
     logging.info("Received extract content request")
     if request.method == 'POST':
-        logging.info("Extracting request)
+        logging.info("Extracting request"
+)
         request_json = request.get_json(force=True)
         logging.info("Sending request to extraction")
         result = run_extract_content(request_json)
