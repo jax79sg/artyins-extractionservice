@@ -79,9 +79,7 @@ def extract_content_get():
 
 @app.route('/test', methods=['GET'])
 def test_get():
-    response = {
-        'message': 'ok'
-    }
+    logging.info("Test triggered")
     return 0, 200
 
 
