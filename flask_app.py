@@ -80,7 +80,7 @@ def extract_content_get():
 @app.route('/test', methods=['GET'])
 def test_get():
     logging.info("Test triggered")
-    return 0, 200
+    return "ok", 200
 
 
 if __name__ == '__main__':
