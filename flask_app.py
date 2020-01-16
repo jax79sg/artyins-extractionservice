@@ -15,43 +15,36 @@ from urllib.parse import urlparse
 from uuid import uuid4
 import requests
 from flask import Flask, jsonify, request
-
+from config import ExtractorConfig
 # Root directory of the project
 ROOT_DIR = os.path.abspath("../")
 sys.path.append(ROOT_DIR)  # To find local version of the library
-
+config = ExtractorConfig()
 # Logging confg
-logging.basicConfig(level=logging.DEBUG,handlers=[
+logging.basicConfig(level= config.LOGGINGLEVEL,handlers=[
         logging.FileHandler("{0}/{1}.log".format("/logs", "extractionservice-flaskapp")),
         logging.StreamHandler()
     ],
                 format="%(asctime)-15s %(levelname)-8s %(message)s")
 
-############################################################
-#  Configurations
-#  Inherits from config.py
-############################################################
-from config import ExtractorConfig
-config = ExtractorConfig()
 PREFIX_PATH=config.SHARED_DATA_PATH
 # Create model object in inference mode.
 module = __import__(config.MODEL_MODULE, fromlist=[config.MODEL_CLASS])
 my_class = getattr(module,config.MODEL_CLASS)
 extractor = my_class()
-logging.info("Dynamic loading completed")
-print("{}.{} loaded successfully!".format(config.MODEL_MODULE,config.MODEL_CLASS))
+logging.info("Dynamic loading completed for %s.%s",config.MODEL_MODULE,config.MODEL_CLASS)
 
 def run_extract_content(data):
     # Expecting {filename:'path'}
     logging.info('Loading data: %s with type %s', data, type(data))
     allresults=[]
     for entry in data:
-        logging.info("Processing: %s ",entry['filename'])
+        logging.debug("Processing: %s ",entry['filename'])
         content,section = extractor.extract(PREFIX_PATH+entry['filename'])
         myresult={'filename':entry['filename'],'id':entry['id'],'section':section,'content':content}
-        logging.info(myresult)
+        logging.debug(myresult)
         allresults.append(myresult)
-
+    
     return allresults
 
 
@@ -62,8 +55,7 @@ app = Flask(__name__)
 def extract_content_get():
     logging.info("Received extract content request")
     if request.method == 'POST':
-        logging.info("Extracting request"
-)
+        logging.info("Extracting request")
         request_json = request.get_json(force=True)
         if isinstance(request_json,str):
            logging.warn("Somehow json is not received, attempting to convert it %s", request_json)
