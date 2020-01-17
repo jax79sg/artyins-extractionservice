@@ -6,8 +6,6 @@ git:
   depth: false
 
 install:
-  - apt update
-  - apt install -y axel
   - ./rebuild.sh
   - docker-compose up -d
 
