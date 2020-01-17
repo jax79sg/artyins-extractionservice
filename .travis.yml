@@ -5,19 +5,10 @@ cache: pip
 git:
   depth: false
 
-# safelist
-branches:
-  only:
-  - master
-  - stable
-
 install:
-  - sudo apt update
-  - sudo apt install wget 
-  - source setup_prerequisites.sh
-  - pip install -r requirements.txt
+  - ./rebuild.sh
+  - docker-compose up -d
 
 script:
-  - gunicorn --bind 0.0.0.0:9891 --daemon --workers 10 wsgi:app
-  - python3 test.py
+  - pip install -r requirements.txt
   - python3 testsendreq.py
