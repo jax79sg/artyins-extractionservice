@@ -1,11 +1,7 @@
 import requests 
 
-URL = "http://127.0.0.1:9891/extract_content"
-DATA = [{'filename':'/test.pdf',},{'filename':'/test2.pdf'}]
+URL = "http://127.0.0.1:9891/test"
   
 # sending get request and saving the response as response object 
-r = requests.post(url = URL, json  = DATA) 
+r = requests.get(url = URL) 
 print(r) 
-# extracting results in json format 
-data = r.json()
-print("Data sent:\n{}\n\nData received:\n{}".format(DATA,data))
