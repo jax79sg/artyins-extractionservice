@@ -6,8 +6,8 @@ RUN apt update && \
 RUN git clone https://github.com/jax79sg/artyins-extractionservice
 RUN cd artyins-extractionservice && \
     ./setup_prerequisites.sh
-COPY tika-server.jar /tmp/tika-server.jar
-COPY tika-server.jar.md5 /tmp/tika-server.jar.md5
+#COPY tika-server.jar /tmp/tika-server.jar
+#COPY tika-server.jar.md5 /tmp/tika-server.jar.md5
 RUN mkdir /logs
 WORKDIR artyins-extractionservice
 ENTRYPOINT ["gunicorn","--bind","0.0.0.0:9891","--workers","10","wsgi:app"]
