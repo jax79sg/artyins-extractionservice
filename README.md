@@ -71,9 +71,9 @@ class TIKExtractor(ExtractorInterface):
         parsed = parser.from_file(fileobject)
         return parsed["content"], "unknown"
 ```
-
 ### Customising the logic
 In the unlikely evenr that you require to custom the existing logic, you may review `flask_app.py`. It is strongly recommended to talk to Jax on this before you get started. Otherwise, by adding your extraction logic indicated above should suffice.
+
 ---
 
 ## Virtualenv
