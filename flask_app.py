@@ -59,7 +59,7 @@ def extract_content_get():
         request_json = request.get_json(force=True)
         if isinstance(request_json,str):
            logging.warn("Somehow json is not received, attempting to convert it %s", request_json)
-           request_json=json.load(request_json)
+           request_json=json.loads(request_json)
         logging.info("Sending request to extraction")
         result = run_extract_content(request_json)
         logging.info("Extraction complete, dumping results")
