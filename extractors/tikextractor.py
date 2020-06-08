@@ -14,7 +14,19 @@ class TIKExtractor(ExtractorInterface):
 
     def extract(self, fileobject):
         parsed = parser.from_file(fileobject)
-        return parsed["content"], "unknown"
+        listOfPara=self.splitInfoPara(parsed["content"])
+        return listOfPara
+
+    def splitIntoPara(self, content):
+        listOfPara=[]
+        listOfSections=[]
+        counter=1
+        splitContent=content.split("\n")
+        for para in splitContent:
+            listOfPara.append(para)
+            listOfSections.append(counter)
+            counter+=1
+        return listOfPara, listOfSections
 
 if __name__=="__main__":
     myextractor = TIKExtractor()

@@ -40,10 +40,13 @@ def run_extract_content(data):
     allresults=[]
     for entry in data:
         logging.debug("Processing: %s ",entry['filename'])
-        content,section = extractor.extract(PREFIX_PATH+entry['filename'])
-        myresult={'filename':entry['filename'],'id':entry['id'],'section':section,'content':content}
-        logging.debug(myresult)
-        allresults.append(myresult)
+        contents,sections = extractor.extract(PREFIX_PATH+entry['filename'])
+        counter=0
+        for content in contents:
+           content=content.trim()
+           myresult={'filename':entry['filename'],'id':entry['id'],'section':section[counter],'content':content}
+           logging.debug(myresult)
+           allresults.append(myresult)
     
     return allresults
 
