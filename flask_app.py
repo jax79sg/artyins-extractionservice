@@ -47,7 +47,7 @@ def run_extract_content(data):
            myresult={'filename':entry['filename'],'id':entry['id'],'section':section[counter],'content':content}
            logging.debug(myresult)
            allresults.append(myresult)
-    
+    logging.debug("size of paras after extraction: " + str(len(allresults)))    
     return allresults
 
 
