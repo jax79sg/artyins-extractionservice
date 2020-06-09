@@ -75,6 +75,7 @@ def extract_content_get():
 
 @app.route('/test', methods=['GET'])
 def test_get():
+    logging.info("version 0.10")
     extractor.extract('test.txt')
     return "ok", 200
 
