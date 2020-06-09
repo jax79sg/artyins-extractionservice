@@ -45,9 +45,10 @@ def run_extract_content(data):
         for content in contents:
            content=content.trim()
            myresult={'filename':entry['filename'],'id':entry['id'],'section':section[counter],'content':content}
-           logging.debug(myresult)
+           #logging.debug(myresult)
            allresults.append(myresult)
     logging.debug("size of paras after extraction: " + str(len(allresults)))    
+    logging.debug("Test content [0] " + str(allresults[0]))
     return allresults
 
 
