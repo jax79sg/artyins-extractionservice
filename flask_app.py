@@ -43,7 +43,7 @@ def run_extract_content(data):
         contents,sections = extractor.extract(PREFIX_PATH+entry['filename'])
         counter=0
         for content in contents:
-           content=content.trim()
+           content=content.strip()
            myresult={'filename':entry['filename'],'id':entry['id'],'section':section[counter],'content':content}
            #logging.debug(myresult)
            allresults.append(myresult)
