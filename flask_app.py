@@ -21,12 +21,14 @@ ROOT_DIR = os.path.abspath("../")
 sys.path.append(ROOT_DIR)  # To find local version of the library
 config = ExtractorConfig()
 # Logging confg
-logging.basicConfig(level= config.LOGGINGLEVEL,handlers=[
+try:
+   logging.basicConfig(level= config.LOGGINGLEVEL,handlers=[
         logging.FileHandler("{0}/{1}.log".format("/logs", "extractionservice-flaskapp")),
         logging.StreamHandler()
     ],
                 format="%(asctime)-15s %(levelname)-8s %(message)s")
-
+except: 
+   pass
 PREFIX_PATH=config.SHARED_DATA_PATH
 # Create model object in inference mode.
 module = __import__(config.MODEL_MODULE, fromlist=[config.MODEL_CLASS])
@@ -39,16 +41,19 @@ def run_extract_content(data):
     logging.info('Loading data: %s with type %s', data, type(data))
     allresults=[]
     for entry in data:
-        logging.debug("Processing: %s ",entry['filename'])
-        contents,sections = extractor.extract(PREFIX_PATH+entry['filename'])
         counter=0
-        for content in contents:
-           content=content.strip()
-           myresult={'filename':entry['filename'],'id':entry['id'],'section':sections[counter],'content':content}
+        logging.debug("Processing: %s ",entry['filename'])
+        content = extractor.extract(PREFIX_PATH+entry['filename'])
+        logging.debug("Managed to extract: %s",content)
+        for para in content:
+           myresult={'filename':entry['filename'],'id':counter,'content':para.strip()}
+           logging.debug("Building entry: %s",myresult)
+           counter+=1
+        #myresult={'filename':entry['filename'],'id':entry['id'],'section':section,'content':content}
+        #myresult={'filename':entry['filename'],'section':section,'content':content}
            #logging.debug(myresult)
            allresults.append(myresult)
-    logging.debug("size of paras after extraction: " + str(len(allresults)))    
-    logging.debug("Test content [0] " + str(allresults[0]))
+    
     return allresults
 
 
@@ -66,16 +71,17 @@ def extract_content_get():
            request_json=json.loads(request_json)
         logging.info("Sending request to extraction")
         result = run_extract_content(request_json)
-        logging.info("Extraction complete, dumping results")
+        logging.info("Extraction complete, dumping results %s",str(result))
         response_msg = json.dumps(result)
         response = {
-           'results': response_msg
+           'results': result
         }
+        #response=json.dumps(response)
+        #print(response)
         return jsonify(response), 200
 
 @app.route('/test', methods=['GET'])
 def test_get():
-    logging.info("version 0.10")
     extractor.extract('test.txt')
     return "ok", 200
 
